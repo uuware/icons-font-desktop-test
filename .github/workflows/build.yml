@@ -32,21 +32,26 @@ jobs:
       - name: build windows app
         if: matrix.os == 'windows-latest'
         continue-on-error: true
-        run: npm run build:win
+        run: |
+            npm run build:win
+            dir dist/build/
 
       - name: build linux app
         if: matrix.os == 'ubuntu-latest'
         continue-on-error: true
-        run: npm run build:linux
+        run: |
+            npm run build:linux
+            ls -l dist/build/
 
       - name: build macos app
         if: matrix.os == 'macos-latest'
         continue-on-error: true
-        run: npm run build:mac
+        run: |
+            npm run build:mac
+            ls -l dist/build/
 
       - name: cleanup artifacts for windows
         run: |
-            ls -l dist/build/
             npx rimraf "dist/build/win-ia32-unpacked"
             npx rimraf "dist/build/win-unpacked"
 
