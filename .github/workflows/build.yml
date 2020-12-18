@@ -57,6 +57,9 @@ jobs:
         run: |
             npx rimraf "dist/build/win-ia32-unpacked"
             npx rimraf "dist/build/win-unpacked"
+            npx rimraf "dist/build/linux-unpacked"
+            npx rimraf "dist/build/mas"
+            npx rimraf "dist/build/mas"
 
       - name: upload artifacts
         uses: actions/upload-artifact@v2
