@@ -1,6 +1,6 @@
 name: Build
 
-# git tag v0.1.0
+# git tag v1.0.0
 # git push origin --tags
 on: [push]
 #  push:
@@ -23,9 +23,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 12
-      - name: get-npm-version
-        id: package-version
-        uses: martinbeentjes/npm-get-version-action@master
+      # - name: get-npm-version
+      #   id: package-version
+      #   uses: martinbeentjes/npm-get-version-action@master
       - run: npm ci
 
       - name: build windows app
