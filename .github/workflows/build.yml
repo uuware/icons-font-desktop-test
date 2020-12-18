@@ -59,7 +59,7 @@ jobs:
             npx rimraf "dist/build/win-unpacked"
             npx rimraf "dist/build/linux-unpacked"
             npx rimraf "dist/build/mas"
-            npx rimraf "dist/build/mas"
+            npx rimraf "dist/build/mac"
 
       - name: upload artifacts
         uses: actions/upload-artifact@v2
