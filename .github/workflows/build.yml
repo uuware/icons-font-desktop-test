@@ -13,6 +13,7 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     strategy:
+      fail-fast: false
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
   
@@ -42,6 +43,7 @@ jobs:
 
       - name: cleanup artifacts for windows
         run: |
+            ls -l
             npx rimraf "dist/build/win-ia32-unpacked"
             npx rimraf "dist/build/win-unpacked"
 
