@@ -1,0 +1,60 @@
+name: Build
+
+on: [push]
+
+jobs:
+
+  build-mac:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm ci
+      - run: npm run build:mac
+      - run: echo "::set-env name=VERSION::$(node dist/package-version.js)"
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: app-bundle-mac
+          path: release/icons-font-desktop-${{ env.VERSION }}.dmg
+
+  build-linux:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm ci
+      - run: npm run build:linux
+      - run: echo "::set-env name=VERSION::$(node dist/package-version.js)"
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: app-bundle-linux
+          path: release/icons-font-desktop-${{ env.VERSION }}.AppImage
+
+
+  windows:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm ci
+      - run: npm run build:win
+      - run: echo "::set-env name=VERSION::$(node dist/package-version.js)"
+      - name: Upload portable exe artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: app-bundle-win
+          path: release/icons-font-desktop-${{ env.VERSION }}.exe
