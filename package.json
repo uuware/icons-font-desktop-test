@@ -5,9 +5,9 @@
   "main": "main.js",
   "scripts": {
     "maintain": "node ./src/maintain/maintain.js --maintain",
-    "build:win": "cd public && npm install --production && cd .. && electron-builder --win --config configuration/builder.json",
-    "build:linux": "cd public && npm install --production && cd .. && electron-builder --linux --config configuration/builder.json",
-    "build:mac": "cd public && npm install --production && cd .. && export CSC_IDENTITY_AUTO_DISCOVERY=false && electron-builder --mac --x64 --config configuration/builder.json",
+    "build:win": "electron-builder --win --config configuration/builder.json",
+    "build:linux": "electron-builder --linux --config configuration/builder.json",
+    "build:mac": "export CSC_IDENTITY_AUTO_DISCOVERY=false && electron-builder --mac --x64 --config configuration/builder.json",
     "start": "node ./src/maintain/build.js && electron ."
   },
   "repository": "https://github.com/uuware/icons-font-desktop",
