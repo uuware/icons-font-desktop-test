@@ -33,22 +33,16 @@ jobs:
         if: matrix.os == 'windows-latest'
         continue-on-error: true
         run: npm run build:win
-        with:
-          github_token: ${{ secrets.github_token }}
 
       - name: build linux app
         if: matrix.os == 'ubuntu-latest'
         continue-on-error: true
         run: npm run build:linux
-        with:
-          github_token: ${{ secrets.github_token }}
 
       - name: build macos app
         if: matrix.os == 'macos-latest'
         continue-on-error: true
         run: npm run build:mac
-        with:
-          github_token: ${{ secrets.github_token }}
 
       - name: list
         if: matrix.os == 'windows-latest'
