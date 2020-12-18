@@ -1,6 +1,6 @@
 name: Build
 
-# git tag v1.0.0
+# git tag v1.0.1
 # git push origin --tags
 on: [push]
 #  push:
@@ -46,7 +46,7 @@ jobs:
 
       - name: cleanup artifacts for windows
         run: |
-            ls -l
+            ls -l dist/build/
             npx rimraf "dist/build/win-ia32-unpacked"
             npx rimraf "dist/build/win-unpacked"
 
@@ -64,7 +64,7 @@ jobs:
         # if: startsWith(github.ref, 'refs/tags/v')
         with:
           draft: true
-          files: "dist/**"
+          files: "dist/build/**"
         env:
           # GitHub token, automatically provided to the action
           # (No need to define this secret in the repo settings)
