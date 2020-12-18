@@ -3,7 +3,7 @@
 const remote = require('electron').remote;
 
 window.showVersion = () => {
-  var verUrl = 'https://github.com/uuware/icons-font-desktop/raw/main/dist/version.html?ver=';
+  var verUrl = 'https://uuware.github.io/icons-font-desktop/dist/version.html?ver=';
   var ver = remote.app.getVersion();
   document.getElementById('version').src = verUrl + ver;
 }
