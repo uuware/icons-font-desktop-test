@@ -5,7 +5,7 @@ const remote = require('electron').remote;
 window.showVersion = () => {
   var verUrl = 'https://uuware.github.io/icons-font-desktop/dist/version.html?ver=';
   var ver = remote.app.getVersion();
-  document.getElementById('version').src = verUrl + ver;
+  document.getElementById('version').src = verUrl + ver + '.&t=' + Date.now;
 }
 
 window.addEventListener('DOMContentLoaded', () => {
