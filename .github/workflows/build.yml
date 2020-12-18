@@ -31,14 +31,17 @@ jobs:
 
       - name: build windows app
         if: matrix.os == 'windows-latest'
+        continue-on-error: true
         run: npm run build:win
 
       - name: build linux app
         if: matrix.os == 'ubuntu-latest'
+        continue-on-error: true
         run: npm run build:linux
 
       - name: build macos app
         if: matrix.os == 'macos-latest'
+        continue-on-error: true
         run: npm run build:mac
 
       - name: cleanup artifacts for windows

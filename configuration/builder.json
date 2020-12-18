@@ -62,8 +62,8 @@
   },
   "linux": {
     // rpm needs yum install rpm
-    // "deb", "rpm", 
-    "target": ["tar.gz", "snap", "appImage"],
+    // "deb", "rpm", "snap", 
+    "target": ["tar.gz", "appImage"],
     "category": "Utility",
     "icon": "configuration/electron/osx/icon.icns"
   },
