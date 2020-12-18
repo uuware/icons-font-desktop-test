@@ -32,25 +32,34 @@ jobs:
       - name: build windows app
         if: matrix.os == 'windows-latest'
         continue-on-error: true
-        run: |
-            npm run build:win
-            dir dist/build/
+        run: npm run build:win
+        with:
+          github_token: ${{ secrets.github_token }}
 
       - name: build linux app
         if: matrix.os == 'ubuntu-latest'
         continue-on-error: true
-        run: |
-            npm run build:linux
-            ls -l dist/build/
+        run: npm run build:linux
+        with:
+          github_token: ${{ secrets.github_token }}
 
       - name: build macos app
         if: matrix.os == 'macos-latest'
         continue-on-error: true
-        run: |
-            npm run build:mac
-            ls -l dist/build/
+        run: npm run build:mac
+        with:
+          github_token: ${{ secrets.github_token }}
 
-      - name: cleanup artifacts for windows
+      - name: list
+        if: matrix.os == 'windows-latest'
+        continue-on-error: true
+        run: dir dist/build/
+
+      - name: list
+        if: matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'
+        run: ls -l dist/build/
+
+      - name: cleanup artifacts
         run: |
             npx rimraf "dist/build/win-ia32-unpacked"
             npx rimraf "dist/build/win-unpacked"
